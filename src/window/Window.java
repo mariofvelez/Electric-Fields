@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -157,9 +158,21 @@ public class Window extends JFrame
 		controls_description.setEditable(false);
 		controls_description.setHighlighter(null);
 		gc.gridy = 5;
-		gc.weighty = 1;
 		gc.anchor = GridBagConstraints.NORTHWEST;
 		control_panel.add(controls_description, gc);
+		
+		JButton restart_button = new JButton("Restart");
+		gc.gridy = 6;
+		gc.weighty = 1;
+		gc.anchor = GridBagConstraints.NORTH;
+		control_panel.add(restart_button, gc);
+		
+		restart_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				field.electric_field.particles.clear();
+			}
+		});
 		
 		window.add(control_panel, BorderLayout.EAST);
 		
